@@ -1,20 +1,20 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: lets-chat-mongo
+  name: lets-chat-mongoUserX
   labels:
-    app: lets-chat
+    app: lets-chatUserX
     tier: backend
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: lets-chat
+        app: lets-chatUserX
         tier: backend
     spec:
       containers:
-      - name: lets-chat-mongo
+      - name: lets-chat-mongoUserX
         image: "sinenomine/mongodb-s390x"
         imagePullPolicy: IfNotPresent
         ports:
@@ -24,13 +24,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo
+  name: mongoUserX
   labels:
     tier: backend
 spec:
   type: ClusterIP
   selector:
-    app: lets-chat
+    app: lets-chatUserX
     tier: backend
   ports:
   - port: 27017
