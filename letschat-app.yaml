@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: lets-chat-app
+  labels:
+    app: lets-chat
+    tier: frontend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: lets-chat
+        tier: frontend
+    spec:
+      containers:
+      - name: lets-chat-app
+        image: "sdelements/lets-chat:latest"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8080
+        env:
+        - name: LCB_DATABASE_URI
+          value: mongodb://mongo/letschat
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lets-chat-app
+  labels:
+    app: lets-chat
+    tier: frontend
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: lets-chat-app-port
+  selector:
+app: lets-chat
+    tier: frontend
