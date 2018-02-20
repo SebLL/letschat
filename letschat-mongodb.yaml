@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: lets-chat-mongo
+  labels:
+    app: lets-chat
+    tier: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: lets-chat
+        tier: backend
+    spec:
+      containers:
+      - name: lets-chat-mongo
+        image: "mongo:3.5.11"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 27017
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+  labels:
+    tier: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: lets-chat
+    tier: backend
+  ports:
+  - port: 27017
+    targetPort: 27017
+protocol: TCP
+    name: lets-chat-mongo-port
