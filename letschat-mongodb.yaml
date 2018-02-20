@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: lets-chat-mongo
-        image: "mongo:3.5.11"
+        image: "sinenomine/mongodb-s390x"
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
