@@ -15,14 +15,14 @@ spec:
     spec:
       containers:
       - name: lets-chat-appUserX
-        image: "sdelements/lets-chat:latest"
+        image: "sebll/letschat:latest"
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
           containerPort: 8080
         env:
         - name: LCB_DATABASE_URI
-          value: mongodb://mongo/letschatUserX
+          value: mongodb://mongoUserX/letschatUserX
 ---
 apiVersion: v1
 kind: Service
