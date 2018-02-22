@@ -22,7 +22,7 @@ spec:
           containerPort: 8080
         env:
         - name: LCB_DATABASE_URI
-          value: mongodb://mongoUserX/letschatUserX
+          value: mongodb://mongoUserX/letschat
 ---
 apiVersion: v1
 kind: Service
