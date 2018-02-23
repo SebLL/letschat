@@ -15,5 +15,6 @@ spec:
       protocol: TCP
       name: {{ .Values.service.name }}
   selector:
-    app: {{ template "name" . }}
+    app: {{ template "fullname" . }}
     release: {{ .Release.Name }}
+    tier: {{ .Values.service.tier }}
