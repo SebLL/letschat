@@ -39,5 +39,5 @@ spec:
     protocol: TCP
     name: lets-chat-app-port
   selector:
-app: lets-chatUserX
+    app: lets-chatUserX
     tier: frontend
