@@ -15,6 +15,7 @@ spec:
     spec:
       nodeSelector: 
         beta.kubernetes.io/arch: "s390x"
+        icpzlab: "yes"
       containers:
       - name: lets-chat-appUserX
         image: "sebll/letschat:latest"

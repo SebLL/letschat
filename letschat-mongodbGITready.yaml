@@ -15,6 +15,7 @@ spec:
     spec:
       nodeSelector: 
         beta.kubernetes.io/arch: "s390x"
+        icpzlab: "yes"
       containers:
       - name: lets-chat-mongoUserX
         image: "sinenomine/mongodb-s390x"
