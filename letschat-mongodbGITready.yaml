@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: lets-chat-mongoUserX
+  labels:
+    app: lets-chatUserX
+    tier: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: lets-chatUserX
+        tier: backend
+    spec:
+      nodeSelector: {
+            "beta.kubernetes.io/arch": "s390x"
+            },
+      containers:
+      - name: lets-chat-mongoUserX
+        image: "sinenomine/mongodb-s390x"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 27017
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongoUserX
+  labels:
+    tier: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: lets-chatUserX
+    tier: backend
+  ports:
+  - port: 27017
+    targetPort: 27017
+    protocol: TCP
+    name: lets-chat-mongo-port
