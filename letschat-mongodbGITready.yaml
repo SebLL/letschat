@@ -13,9 +13,8 @@ spec:
         app: lets-chatUserX
         tier: backend
     spec:
-      nodeSelector: {
-            "beta.kubernetes.io/arch": "s390x"
-            },
+      nodeSelector: 
+        beta.kubernetes.io/arch: "s390x"
       containers:
       - name: lets-chat-mongoUserX
         image: "sinenomine/mongodb-s390x"
